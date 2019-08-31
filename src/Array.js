@@ -41,6 +41,35 @@ class Arr {
     return this.size;
   }
 
+  setSize(s) {
+    this.size = s;
+    this.clearAll();
+
+    for (let i = 0; i < this.size; i++) {
+      this.arr.push(
+        Math.floor(Math.random() * (this.max - this.min + 1) + this.min)
+      );
+
+      this.rect.push(
+        new Rect(
+          this.ctx,
+          this.startx + (this.width / this.size) * i,
+          this.starty + (this.height / this.max) * (this.max - this.arr[i]),
+          this.width / this.size,
+          (this.height / this.max) * this.arr[i]
+        )
+      );
+    }
+  }
+
+  clearAll() {
+    this.arr = [];
+    this.rect = [];
+    this.finished = [];
+    this.highlightgreen = [];
+    this.highlightred = [];
+  }
+
   draw() {
     this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     this.rect.forEach((e, i) => {
