@@ -1,4 +1,6 @@
 import Arr from "./Array";
+import bubbleSort from "./bubble";
+import insertionSort from "../insertion";
 
 const canvas = document.getElementById("canvas");
 canvas.width = window.innerWidth;
@@ -22,26 +24,5 @@ window.addEventListener("resize", () => {
 let arr = new Arr(canvas, startx, starty, width, height);
 arr.draw();
 
-let i = 0;
-const outerloop = () => {
-  let j = 1;
-  const innerloop = () => {
-    if (arr.getItem(j - 1) > arr.getItem(j)) {
-      const temp = arr.getItem(j - 1);
-      arr.update(arr.getItem(j), j - 1);
-      arr.update(temp, j);
-      arr.draw(j);
-    }
-    j++;
-    if (j < arr.getSize() - i) {
-      setTimeout(innerloop, 500);
-    } else {
-      i++;
-      if (i < arr.getSize() - 1) {
-        setTimeout(outerloop, 500);
-      }
-    }
-  };
-  innerloop();
-};
-outerloop();
+// bubbleSort(arr);
+insertionSort(arr);

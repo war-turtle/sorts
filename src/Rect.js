@@ -10,10 +10,14 @@ class Rect {
   draw(i) {
     this.ctx.beginPath();
     this.ctx.rect(this.x, this.y, this.width, this.height);
-    if (i != -1) {
-      this.ctx.fillStyle = "#342";
+    if (i == 0) {
+      this.ctx.fillStyle = "red";
+    } else if (i == 1) {
+      this.ctx.fillStyle = "green";
+    } else if (i == 2) {
+      this.ctx.fillStyle = "pink";
     } else {
-      this.ctx.fillStyle = "#000";
+      this.ctx.fillStyle = "black";
     }
     this.ctx.fill();
   }
